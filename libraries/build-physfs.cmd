@@ -1,8 +1,9 @@
-@set CWD=%~dp0
-@cd ..\toolkit
-@call activate.cmd
-@cd %CWD%physfs*
-cmake -G "MinGW Makefiles"^
+set CWD=%~dp0
+cd ..\toolkit
+call activate.cmd
+cd %CWD%physfs-*
+cmake^
+    -G "MinGW Makefiles"^
     -DCMAKE_BUILD_TYPE=Release^
     -DPHYSFS_BUILD_STATIC:BOOL=ON^
     -DPHYSFS_BUILD_SHARED:BOOL=OFF^
@@ -16,6 +17,6 @@ cmake -G "MinGW Makefiles"^
     -DPHYSFS_ARCHIVE_WAD:BOOL=OFF^
     -DPHYSFS_ARCHIVE_SLB:BOOL=OFF^
     -DPHYSFS_ARCHIVE_VDF:BOOL=OFF^
-    -DPHYSFS_ARCHIVE_ISO9660:BOOL=OFF &
+    -DPHYSFS_ARCHIVE_ISO9660:BOOL=OFF
 mingw32-make
 cd %CWD%
