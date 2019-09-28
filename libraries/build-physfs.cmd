@@ -1,11 +1,12 @@
 setlocal
-set BRANCH=release-3.0.1
+set BRANCH=release-3.0.2
 set CWD=%~dp0
 cd ..\toolkit
 call activate.cmd
 cd %CWD%
 if not exist physfs hg clone https://hg.icculus.org/icculus/physfs
 cd physfs
+hg pull -u
 hg up -C %BRANCH%
 cmake^
     -G "MinGW Makefiles"^

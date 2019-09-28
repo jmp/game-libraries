@@ -1,11 +1,12 @@
 setlocal
-set BRANCH=release-2.0.8
+set BRANCH=release-2.0.10
 set CWD=%~dp0
 cd ..\toolkit
 call activate.cmd
 cd %CWD%
 if not exist SDL2 hg clone http://hg.libsdl.org/SDL SDL2
 cd SDL2
+hg pull -u
 hg up -C %BRANCH%
 copy CMakeLists.txt CMakeLists.txt.bak
 python -c "print(open('CMakeLists.txt').read().replace('if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})','if(FALSE)'))" > CMakeLists.txt.new
